@@ -1,0 +1,19 @@
+source /usr/local/Cellar/git/2.12.0/etc/bash_completion.d/git-prompt.sh
+source /usr/local/Cellar/git/2.12.0/etc/bash_completion.d/git-completion.bash
+GIT_PS1_SHOWDIRTYSTATE=true
+export PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
+alias viba='vim ~/.bashrc'
+alias soba='source ~/.bashrc'
+alias ls='ls -G'
+alias vimvim='vim ~/.vimrc'
+alias rs='rails s'
+alias rc='rails c'
+alias ga="git add -A"
+alias gcom="git commit -m"
+alias lazy="clockwork /Users/haneru/myfold/clock.rb"
+alias find="find /Users/haneru -name"
+alias vimlazy="vim /Users/haneru/myfold/clock.rb"
+alias catlazy="cat -n /Users/haneru/myfold/clock.rb"
+alias music="open https://listenonrepeat.com/?v=LXp0v93ZRTs#GACKT%E3%80%8CREDEMPTION%E3%80%8D"
+alias sqiita="open http://qiita.com/search?q=+tag%3ARuby"
+alias gitco="git checkout"
