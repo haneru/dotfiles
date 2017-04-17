@@ -50,14 +50,14 @@ set backspace=indent,eol,start
 set nocompatible
 
 if &compatible
-    set nocompatible               " Be iMproved
+    set nocompatible " Be iMproved
     endif
 
     " Required:
     set runtimepath+=~/.cache2/dein/repos/github.com/Shougo/dein.vim
 
     " Required:
-    call dein#begin('Shougo/deinvim')
+    call dein#begin('~/deinvim')
 
     " Let dein manage dein
     " Required:
@@ -127,6 +127,12 @@ let g:necomplcache_enable_at_startup = 1
 " Use smartcase
 let g:necomplcache_enable_smart_case = 3
 
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_underbar_completion = 1
+
 " Rsense
 if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
@@ -135,5 +141,5 @@ endif
 let  g:neocomplcache_omni_patterns.ruby = '[^.*\t]\.\w*\|\h\w*::'
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
-let g:rsenseHome = expand('/Users/haneru/.rbenv/shims/rsense')
+let g:rsenseHome = '/Users/haneru/.rbenv/shims/rsense'
 let g:rsenseUseOmniFunc = 1
