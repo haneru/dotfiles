@@ -49,9 +49,28 @@ set backspace=indent,eol,start
 
 set nocompatible
 
+" Vim起動完了時にインストール
+augroup PluginInstall
+  autocmd!
+  autocmd VimEnter * if dein#check_install() | call dein#install() | endif
+augroup END
+
+" 各プラグインをインストールするディレクトリ
+  let s:plugin_dir = expand('~/.vim/')
+
+" dein.vimをインストールするディレクトリをランタイムパスへ追加
+  let s:dein_dir = s:plugin_dir . 'repos/github.com/Shougo/dein.vim'
+  execute 'set runtimepath+=' . s:dein_dir
+
+" dein.vimがまだ入ってなければ 最初に git clone
+if !isdirectory(s:dein_dir)
+  call mkdir(s:dein_dir, 'p')
+  silent execute printf('!git clone %s %s','https://github.com/Shougo/dein.vim', s:dein_dir)
+endif
+
 if &compatible
-    set nocompatible " Be iMproved
-    endif
+  set nocompatible " Be iMproved
+endif
 
     " Required:
     set runtimepath+=~/.cache2/dein/repos/github.com/Shougo/dein.vim
@@ -119,13 +138,13 @@ let g:unite_source_alias_aliases = {
 \}
 
 call unite#custom#source('project_mru', 'matchers', ['matcher_project_files', 'matcher_default', 'converter_relative_abbr'])
-" neocomplcasheの設定
+" neocomplcacheの設定
 "Disable Auto ComplPop
 let g:acp_enableAtStartup = 0
-" Use necomplcache
-let g:necomplcache_enable_at_startup = 1
+" Use neocomplcache
+let g:neocomplcache_enable_at_startup = 1
 " Use smartcase
-let g:necomplcache_enable_smart_case = 3
+let g:neocomplcache_enable_smart_case = 3
 
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
@@ -134,12 +153,12 @@ let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_underbar_completion = 1
 
 " Rsense
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
-endif
-
-let  g:neocomplcache_omni_patterns.ruby = '[^.*\t]\.\w*\|\h\w*::'
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-
 let g:rsenseHome = '/Users/haneru/.rbenv/shims/rsense'
 let g:rsenseUseOmniFunc = 1
+if !exists('g:neocomplcache_omni_patterms')
+  let g:neocomplcache_omni_patterms = {}
+endif
+
+let  g:neocomplcache_omni_patterms.ruby = '[^.*\t]\.\w*\|\h\w*::'
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+
