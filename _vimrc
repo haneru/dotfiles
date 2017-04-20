@@ -65,71 +65,73 @@ augroup END
 " dein.vimがまだ入ってなければ 最初に git clone
 if !isdirectory(s:dein_dir)
   call mkdir(s:dein_dir, 'p')
-  silent execute printf('!git clone %s %s','https://github.com/Shougo/dein.vim', s:dein_dir)
+  silent execute printf('!git clone %s %s','https://github.com/Shougo/dein.vim'
+  , s:dein_dir)
 endif
 
 if &compatible
   set nocompatible " Be iMproved
 endif
 
-    " Required:
-    set runtimepath+=~/.cache2/dein/repos/github.com/Shougo/dein.vim
+  " Required:
+  set runtimepath+=~/.cache2/dein/repos/github.com/Shougo/dein.vim
 
-    " Required:
-    call dein#begin('~/deinvim')
+  " Required:
+  call dein#begin('~/deinvim')
 
-    " Let dein manage dein
-    " Required:
-    call dein#add('Shougo/dein.vim')
+  " Let dein manage dein
+  " Required:
+  call dein#add('Shougo/dein.vim')
 
-    " Add or remove your plugins here:
-    call dein#add('Shougo/neosnippet.vim')
-    call dein#add('Shougo/neosnippet-snippets')
-    call dein#add('tpope/vim-rails')
-    call dein#add('tpope/vim-fugitive')
-    call dein#add('leafgarland/typescript-vim')
-    call dein#add('Shougo/neomru.vim')
-    call dein#add('Shougo/unite.vim')
-    call dein#add('scrooloose/nerdtree')
-    call dein#add('Shougo/neocomplcache.vim') 
-    call dein#add('Shougo/neocomplcache-rsense.vim')
+  " Add or remove your plugins here:
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('tpope/vim-rails')
+  call dein#add('tpope/vim-fugitive')
+  call dein#add('leafgarland/typescript-vim')
+  call dein#add('Shougo/neomru.vim')
+  call dein#add('Shougo/unite.vim')
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('Shougo/neocomplcache.vim') 
+  call dein#add('Shougo/neocomplcache-rsense.vim')
+  call dein#add('scrooloose/syntastic.git')
 
-    " You can specify revision/branch/tag.
-    call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+  " You can specify revision/branch/tag.
+  call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
-    " Required:
-    call dein#end()
+  " Required:
+  call dein#end()
 
-    " Required:
-    filetype plugin indent on
-    syntax enable
+  " Required:
+  filetype plugin indent on
+  syntax enable
 
-    " If you want to install not installed plugins on startup.
-    if dein#check_install()
-        call dein#install()
-        endif
+  " If you want to install not installed plugins on startup.
+  if dein#check_install()
+      call dein#install()
+  endif
 
-        let g:unite_enable_start_insert=1
-        let g:unite_source_history_yank_enable =1
-        let g:unite_source_file_mru_limit = 200
-        nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
-        nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-        nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-        nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
-        nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
+    let g:unite_enable_start_insert=1
+    let g:unite_source_history_yank_enable =1
+    let g:unite_source_file_mru_limit = 200
+    nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
+    nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+    nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+    nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+    nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
 
-        nnoremap <silent> ,v :<C-u>vs<CR>
-        nnoremap <silent> ,s :<C-u>split<CR>
-        nnoremap <silent> ,q :<C-u>q<CR>
-        nnoremap <silent> ,b :<C-u>e#<CR>
-        nnoremap <silent> ,t :<C-u>tjump<CR>
-        nnoremap <silent> ,n :<C-u>NERDTreeToggle<CR>
+    nnoremap <silent> ,v :<C-u>vs<CR>
+    nnoremap <silent> ,s :<C-u>split<CR>
+    nnoremap <silent> ,q :<C-u>q<CR>
+    nnoremap <silent> ,b :<C-u>e#<CR>
+    nnoremap <silent> ,t :<C-u>tjump<CR>
+    nnoremap <silent> ,n :<C-u>NERDTreeToggle<CR>
 
-        nnoremap <silent> r :<C-u>Unite project_mru<CR>
-        nnoremap <silent> R :<C-u>Unite file_mru buffer<CR>
+    nnoremap <silent> r :<C-u>Unite project_mru<CR>
+    nnoremap <silent> R :<C-u>Unite file_mru buffer<CR>
 
-        nnoremap <silent> gr :<C-u>Ggrep <cword> \| cw <CR>
-        nnoremap <silent> gn :<C-u>Nt<CR>
+    nnoremap <silent> gr :<C-u>Ggrep <cword> \| cw <CR>
+    nnoremap <silent> gn :<C-u>Nt<CR>
 " 現在のディレクトリ以下のみを相対パスで表示
 let g:unite_source_alias_aliases = {
 \   "project_mru" : {
