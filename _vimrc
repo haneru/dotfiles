@@ -95,7 +95,7 @@ endif
   call dein#add('Shougo/neocomplcache.vim') 
   call dein#add('Shougo/neocomplcache-rsense.vim')
   call dein#add('scrooloose/syntastic.git')
-
+  call dein#add('slim-template/vim-slim')
   " You can specify revision/branch/tag.
   call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
@@ -163,4 +163,17 @@ endif
 
 let  g:neocomplcache_omni_patterms.ruby = '[^.*\t]\.\w*\|\h\w*::'
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-
+" Syntastic
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=2
+let g:syntastic_enable_highlighting=1
+let g:syntastic_mode_map = {'mode': 'passive'}
+augroup AutoSyntastic
+  autocmd!
+  autocmd InsertLeave, TermChanged * call s:syntastic()
+augroup END
+function! s:syntastic()
+  w
+  SyntasticCheck
+endfunction
