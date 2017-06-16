@@ -49,6 +49,12 @@ set backspace=indent,eol,start
 
 set nocompatible
 
+" カラースキーマ設定
+"set t_Co=256
+"colorscheme molokai
+"let g:molokai_original=1
+"set background=dark
+
 " Vim起動完了時にインストール
 augroup PluginInstall
   autocmd!
@@ -177,3 +183,4 @@ function! s:syntastic()
   w
   SyntasticCheck
 endfunction
+

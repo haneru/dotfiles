@@ -5,3 +5,4 @@ export PATH="/usr/local/Cellar/git/2.5.0/bin:$PATH"
 if [ -f ~/.bashrc ] ; then
 . ~/.bashrc
 fi
+PATH=/Users/haneru/.Pokemon-Terminal:/Users/haneru/.rbenv/shims:/Users/haneru/.rbenv/bin:/usr/local/Cellar/git/2.5.0/bin:/Users/haneru/.rbenv/shims:/Users/haneru/.rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
