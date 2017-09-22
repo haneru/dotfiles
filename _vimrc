@@ -145,7 +145,7 @@ let g:unite_source_alias_aliases = {
 \   },
 \}
 
-call unite#custom#source('project_mru', 'matchers', ['matcher_project_files', 'matcher_default', 'converter_relative_abbr'])
+call unite#custom#source('project_mru', 'matchers', ['matcher_project_files','matcher_default', 'converter_relative_abbr'])
 " neocomplcacheの設定
 "Disable Auto ComplPop
 let g:acp_enableAtStartup = 0
