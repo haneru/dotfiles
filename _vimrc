@@ -1,14 +1,15 @@
 set number "行番号を表示する
 set laststatus=2 "編集中のファイル名を表示
-
+set ruler " カーソルの位置表示
 set showmatch "括弧入力時の対応する括弧を表示
 syntax on "コードの色分け
 set smartindent "オートインデント
+set encoding=utf-8
 " 現在の行を強調表示
 set cursorline
 " 現在の行を強調表示（縦）
 " set cursorcolumn
-
+set list
 "#####検索設定#####
 set ignorecase "大文字/小文字の区別なく検索する
 set smartcase "検索文字列に大文字が含まれている場合は区別して検索する
@@ -47,7 +48,11 @@ set clipboard+=unnamed
 
 set backspace=indent,eol,start
 
+" vi 互換モードで動作させない
 set nocompatible
+
+" インデントの可視化
+" let g:indent_guides_enable_on_vim_startup=1
 
 " カラースキーマ設定
 "set t_Co=256
@@ -104,7 +109,7 @@ endif
   call dein#add('slim-template/vim-slim')
   " You can specify revision/branch/tag.
   call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
-
+  call dein#add('nathanaelkane/vim-indent-guides')
   " Required:
   call dein#end()
 
@@ -114,7 +119,7 @@ endif
 
   " If you want to install not installed plugins on startup.
   if dein#check_install()
-      call dein#install()
+    call dein#install()
   endif
 
     let g:unite_enable_start_insert=1
@@ -174,7 +179,8 @@ let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 let g:syntastic_enable_highlighting=1
-let g:syntastic_mode_map = {'mode': 'passive'}
+let g:syntastic_mode_map = {'mode': 'passive', 'active_filetypes': ['ruby'] }
+let g:syntastic_ruby_checkers = ['rubocop']
 augroup AutoSyntastic
   autocmd!
   autocmd InsertLeave, TermChanged * call s:syntastic()
