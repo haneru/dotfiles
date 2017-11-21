@@ -25,3 +25,4 @@ alias gitbos="gitbook serve"
 alias tmuxat="tmux a -t"
 alias sshshuha='ssh synapz@192.168.33.12'
 alias gipumas='git pull origin master'
+alias gbra='git branch'
