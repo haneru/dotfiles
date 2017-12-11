@@ -26,3 +26,7 @@ alias tmuxat="tmux a -t"
 alias sshshuha='ssh synapz@192.168.33.12'
 alias gipumas='git pull origin master'
 alias gbra='git branch'
+alias giloone='git log --oneline'
+alias firefox='open -a Firefox'
+alias safari='open -a Safari'
+alias chrome='open /Applications/Google\ Chrome.app'
