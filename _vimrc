@@ -40,12 +40,13 @@ set shiftwidth=2
 set hlsearch "検索でハイライト 
 
 " 80文字目に線
-set colorcolumn=80 
+set colorcolumn=80
 set viminfo='20,\"1000
 
 " クリップボードにコピー
 set clipboard+=unnamed
 
+" 挿入モードでCtrl+hでバックスペース
 set backspace=indent,eol,start
 
 " vi 互換モードで動作させない
@@ -196,4 +197,8 @@ function! s:syntastic()
   w
   SyntasticCheck
 endfunction
-
+augroup HighlightTrailingSpaces
+  autocmd!
+  autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
+  autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
+augroup END
