@@ -9,7 +9,7 @@ set encoding=utf-8
 set cursorline
 " 現在の行を強調表示（縦）
 " set cursorcolumn
-set list
+" set list
 "#####検索設定#####
 set ignorecase "大文字/小文字の区別なく検索する
 set smartcase "検索文字列に大文字が含まれている場合は区別して検索する
@@ -56,10 +56,10 @@ set nocompatible
 " let g:indent_guides_enable_on_vim_startup=1
 
 " カラースキーマ設定
-"set t_Co=256
-"colorscheme molokai
-"let g:molokai_original=1
-"set background=dark
+set t_Co=256
+colorscheme molokai
+let g:molokai_original=1
+set background=dark
 
 " Vim起動完了時にインストール
 augroup PluginInstall
@@ -104,7 +104,7 @@ endif
   call dein#add('Shougo/neomru.vim')
   call dein#add('Shougo/unite.vim')
   call dein#add('scrooloose/nerdtree')
-  call dein#add('Shougo/neocomplcache.vim') 
+  call dein#add('Shougo/neocomplcache.vim')
   call dein#add('Shougo/neocomplcache-rsense.vim')
   call dein#add('scrooloose/syntastic.git')
   call dein#add('ngmy/vim-rubocop')
@@ -113,6 +113,7 @@ endif
   " You can specify revision/branch/tag.
   call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
   call dein#add('nathanaelkane/vim-indent-guides')
+  call dein#add('othree/yajs.vim')
   " Required:
   call dein#end()
 
@@ -186,7 +187,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 let g:syntastic_enable_highlighting=1
-let g:syntastic_mode_map = {'mode': 'passive', 'active_filetypes': ['ruby', 'slim'] }
+let g:syntastic_mode_map = {'mode': 'passive', 'active_filetypes': ['ruby', 'slim', 'javascript'] }
 let g:syntastic_enable_ruby_checker=1
 let g:syntastic_ruby_checkers = ['rubocop']
 augroup AutoSyntastic
