@@ -32,4 +32,5 @@ alias chrome='open /Applications/Google\ Chrome.app'
 alias gd='git diff'
 alias :q='exit'
 alias git_stash='git stash save -u'
+[[ -s /Users/haneru/.tmuxinator/scripts/tmuxinator ]] && source /Users/haneru/.tmuxinator/scripts/tmuxinator
 export EDITOR="vim"

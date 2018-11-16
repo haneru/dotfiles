@@ -2,6 +2,10 @@ set number "行番号を表示する
 set laststatus=2 "編集中のファイル名を表示
 set ruler " カーソルの位置表示
 set showmatch "括弧入力時の対応する括弧を表示
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap [<Enter> []<Left><CR><ESC><S-o>
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
+source $VIMRUNTIME/macros/matchit.vim
 syntax on "コードの色分け
 set smartindent "オートインデント
 set encoding=utf-8
@@ -37,7 +41,7 @@ set autoindent
 set expandtab
 set shiftwidth=2
 
-set hlsearch "検索でハイライト 
+set hlsearch "検索でハイライト
 
 " 80文字目に線
 set colorcolumn=80
@@ -110,10 +114,12 @@ endif
   call dein#add('ngmy/vim-rubocop')
   call dein#add('slim-template/vim-slim')
   call dein#add('szw/vim-tags')
+  call dein#add('soramugi/auto-ctags.vim')
   " You can specify revision/branch/tag.
   call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
   call dein#add('nathanaelkane/vim-indent-guides')
   call dein#add('othree/yajs.vim')
+  call dein#add('elzr/vim-json')
   " Required:
   call dein#end()
 
@@ -203,3 +209,12 @@ augroup HighlightTrailingSpaces
   autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
   autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
 augroup END
+command! -nargs=? Jq call s:Jq(<f-args>)
+function! s:Jq(...)
+  if 0 == a:0
+    let l:arg = "."
+  else
+    let l:arg = a:1
+  endif
+  execute "%! jq \"" . l:arg . "\""
+endfunction
