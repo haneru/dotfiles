@@ -2,6 +2,10 @@ set number "行番号を表示する
 set laststatus=2 "編集中のファイル名を表示
 set ruler " カーソルの位置表示
 set showmatch "括弧入力時の対応する括弧を表示
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap [<Enter> []<Left><CR><ESC><S-o>
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
+source $VIMRUNTIME/macros/matchit.vim
 syntax on "コードの色分け
 set smartindent "オートインデント
 set encoding=utf-8
@@ -9,7 +13,7 @@ set encoding=utf-8
 set cursorline
 " 現在の行を強調表示（縦）
 " set cursorcolumn
-set list
+" set list
 "#####検索設定#####
 set ignorecase "大文字/小文字の区別なく検索する
 set smartcase "検索文字列に大文字が含まれている場合は区別して検索する
@@ -37,15 +41,16 @@ set autoindent
 set expandtab
 set shiftwidth=2
 
-set hlsearch "検索でハイライト 
+set hlsearch "検索でハイライト
 
 " 80文字目に線
-set colorcolumn=80 
+set colorcolumn=80
 set viminfo='20,\"1000
 
 " クリップボードにコピー
 set clipboard+=unnamed
 
+" 挿入モードでCtrl+hでバックスペース
 set backspace=indent,eol,start
 
 " vi 互換モードで動作させない
@@ -55,10 +60,10 @@ set nocompatible
 " let g:indent_guides_enable_on_vim_startup=1
 
 " カラースキーマ設定
-"set t_Co=256
-"colorscheme molokai
-"let g:molokai_original=1
-"set background=dark
+set t_Co=256
+colorscheme molokai
+let g:molokai_original=1
+set background=dark
 
 " Vim起動完了時にインストール
 augroup PluginInstall
@@ -103,15 +108,18 @@ endif
   call dein#add('Shougo/neomru.vim')
   call dein#add('Shougo/unite.vim')
   call dein#add('scrooloose/nerdtree')
-  call dein#add('Shougo/neocomplcache.vim') 
+  call dein#add('Shougo/neocomplcache.vim')
   call dein#add('Shougo/neocomplcache-rsense.vim')
   call dein#add('scrooloose/syntastic.git')
   call dein#add('ngmy/vim-rubocop')
   call dein#add('slim-template/vim-slim')
   call dein#add('szw/vim-tags')
+  call dein#add('soramugi/auto-ctags.vim')
   " You can specify revision/branch/tag.
   call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
   call dein#add('nathanaelkane/vim-indent-guides')
+  call dein#add('othree/yajs.vim')
+  call dein#add('elzr/vim-json')
   " Required:
   call dein#end()
 
@@ -185,7 +193,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 let g:syntastic_enable_highlighting=1
-let g:syntastic_mode_map = {'mode': 'passive', 'active_filetypes': ['ruby', 'slim'] }
+let g:syntastic_mode_map = {'mode': 'passive', 'active_filetypes': ['ruby', 'slim', 'javascript'] }
 let g:syntastic_enable_ruby_checker=1
 let g:syntastic_ruby_checkers = ['rubocop']
 augroup AutoSyntastic
@@ -196,4 +204,17 @@ function! s:syntastic()
   w
   SyntasticCheck
 endfunction
-
+augroup HighlightTrailingSpaces
+  autocmd!
+  autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
+  autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
+augroup END
+command! -nargs=? Jq call s:Jq(<f-args>)
+function! s:Jq(...)
+  if 0 == a:0
+    let l:arg = "."
+  else
+    let l:arg = a:1
+  endif
+  execute "%! jq \"" . l:arg . "\""
+endfunction

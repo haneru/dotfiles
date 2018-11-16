@@ -1,0 +1,17 @@
+name: test
+project_root: ~/
+
+windows:
+  - main:
+      layout: 3936,182x45,0,0[182x35,0,0[182x25,0,0,11,182x9,0,26{91x9,0,26,3,90x9,92,26,8}],182x9,0,36{91x9,0,36,9,90x9,92,36,2}]
+      panes:
+        - pane1:
+          - vim
+        - pane2:
+        - pane3:
+        - pane4:
+        - pane5:
+  - tig:
+      panes:
+        - pane1:
+        - pane2:
