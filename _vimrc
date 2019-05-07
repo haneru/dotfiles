@@ -10,7 +10,7 @@ syntax on "コードの色分け
 set smartindent "オートインデント
 set encoding=utf-8
 " 現在の行を強調表示
-set cursorline
+set nocursorline
 " 現在の行を強調表示（縦）
 " set cursorcolumn
 " set list
@@ -120,6 +120,10 @@ endif
   call dein#add('nathanaelkane/vim-indent-guides')
   call dein#add('othree/yajs.vim')
   call dein#add('elzr/vim-json')
+  "call dein#add('plasticboy/vim-markdown')
+  "call dein#add('kannokanno/previm')
+  "call dein#add('tyru/open-browser.vim')
+  call dein#add('othree/html5.vim')
   " Required:
   call dein#end()
 
@@ -218,3 +222,18 @@ function! s:Jq(...)
   endif
   execute "%! jq \"" . l:arg . "\""
 endfunction
+
+""" markdown {{{
+"autocmd BufRead,BufNewFile *.mkd  set filetype=markdown
+"autocmd BufRead,BufNewFile *.md  set filetype=markdown
+" Need: kannokanno/previm
+"nnoremap <silent> <C-p> :PrevimOpen<CR> " Ctrl-pでプレビュー
+" 自動で折りたたまないようにする
+"let g:vim_markdown_folding_disabled=1
+" }}}
+
+" html5.vim setting
+let g:html5_event_handler_attributes_complete = 1
+let g:html5_rdfa_attributes_complete = 1
+let g:html5_microdata_attributes_complete = 1
+let g:html5_aria_attributes_complete = 1

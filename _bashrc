@@ -1,5 +1,5 @@
-source /usr/local/Cellar/git/2.12.0/etc/bash_completion.d/git-prompt.sh
-source /usr/local/Cellar/git/2.12.0/etc/bash_completion.d/git-completion.bash
+source /usr/local/etc/bash_completion.d/git-prompt.sh
+source /usr/local/etc/bash_completion.d/git-completion.bash
 GIT_PS1_SHOWDIRTYSTATE=true
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
@@ -34,3 +34,4 @@ alias :q='exit'
 alias git_stash='git stash save -u'
 [[ -s /Users/haneru/.tmuxinator/scripts/tmuxinator ]] && source /Users/haneru/.tmuxinator/scripts/tmuxinator
 export EDITOR="vim"
+alias gcomamend='git commit --amend'
