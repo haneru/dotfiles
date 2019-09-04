@@ -8,7 +8,9 @@ inoremap (<Enter> ()<Left><CR><ESC><S-o>
 source $VIMRUNTIME/macros/matchit.vim
 syntax on "コードの色分け
 set smartindent "オートインデント
+set fileencodings=utf-8,cp932,euc-jp,sjis
 set encoding=utf-8
+set fileformats=unix,dos,mac
 " 現在の行を強調表示
 set nocursorline
 " 現在の行を強調表示（縦）
